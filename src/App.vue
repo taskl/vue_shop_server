@@ -1,15 +1,40 @@
 <template>
   <div id="app">
-    <!-- 路由占位符 -->
-    <router-view></router-view>
+    <div id="nav">
+      <!-- <router-link to="/">Home</router-link> | -->
+      <router-link to="/login">login</router-link>
+    </div>
+        <!-- 
+    include - 字符串或正则表达式。只有名称匹配的组件会被缓存。
+    exclude - 字符串或正则表达式。任何名称匹配的组件都不会被缓存。 
+    -->
+    <keep-alive include="login">
+    <!-- <keep-alive exclude="home"> -->
+        <router-view/>
+    </keep-alive>
+    <!-- 路由控制 -->
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
+<style lang="less">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-</script>
 
-<style>
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>
